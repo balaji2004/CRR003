@@ -37,7 +37,7 @@
     }
 
     #song-list li:hover {
-      background-color: #555;
+      background-color: #1a9c77;
     }
 
     #controls {
@@ -57,12 +57,15 @@
 <body>
 
 <div id="player">
-  <h1>Music Player</h1>
+  <h1>Harmony Haven</h1>
   
   <ul id="song-list">
     <li onclick="playSong('song1.mp3')">Song 1</li>
     <li onclick="playSong('song2.mp3')">Song 2</li>
     <li onclick="playSong('song3.mp3')">Song 3</li>
+    <li onclick="playSong('song4.mp3')">Song 4</li>
+    <li onclick="playSong('song5.mp3')">Song 5</li>
+    <li onclick="playSong('song6.mp3')">Song 6</li>
   </ul>
 
   <div id="controls">
@@ -106,6 +109,8 @@
     currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
     audioPlayer.src = songs[currentSongIndex];
     audioPlayer.play();
+  }
+  
   }
 </script>
 

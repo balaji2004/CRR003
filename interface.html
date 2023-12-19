@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Music Player Dashboard</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #282c34;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #player {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #song-list {
+      list-style-type: none;
+      padding: 0;
+      text-align: left;
+      width: 300px;
+    }
+
+    #song-list li {
+      padding: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #song-list li:hover {
+      background-color: #555;
+    }
+
+    #controls {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      width: 300px;
+    }
+
+    #player audio {
+      width: 100%;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<script src="managing.js"></script>
+<body>
+
+<div id="player">
+  <h1>Music Player</h1>
+  
+  <ul id="song-list">
+    <li onclick="playSong('song1.mp3')">Song 1</li>
+    <li onclick="playSong('song2.mp3')">Song 2</li>
+    <li onclick="playSong('song3.mp3')">Song 3</li>
+  </ul>
+
+  <div id="controls">
+    <button onclick="prevSong()">Previous</button>
+    <button onclick="togglePlayPause()">Play/Pause</button>
+    <button onclick="nextSong()">Next</button>
+  </div>
+
+  <audio id="audio-player"></audio>
+</div>
+
+<script>
+  const songs = ['song1.mp3', 'song2.mp3', 'song3.mp3'];
+  let currentSongIndex = 0;
+  const audioPlayer = document.getElementById('audio-player');
+
+  function playSong(song) {
+    const songIndex = songs.indexOf(song);
+    if (songIndex !== -1) {
+      currentSongIndex = songIndex;
+      audioPlayer.src = song;
+      audioPlayer.play();
+    }
+  }
+
+  function togglePlayPause() {
+    if (audioPlayer.paused) {
+      audioPlayer.play();
+    } else {
+      audioPlayer.pause();
+    }
+  }
+
+  function nextSong() {
+    currentSongIndex = (currentSongIndex + 1) % songs.length;
+    audioPlayer.src = songs[currentSongIndex];
+    audioPlayer.play();
+  }
+
+  function prevSong() {
+    currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+    audioPlayer.src = songs[currentSongIndex];
+    audioPlayer.play();
+  }
+</script>
+
+</body>
+</html>

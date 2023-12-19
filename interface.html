@@ -7,8 +7,8 @@
   <style>
     body {
       font-family: 'Arial', sans-serif;
-      background-color: #282c34;
-      color: white;
+      background-color: #1e272e;
+      color: #ecf0f1;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -21,6 +21,14 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      background-color: #34495e;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      color: #2ecc71;
     }
 
     #song-list {
@@ -51,6 +59,20 @@
       width: 100%;
       margin-top: 20px;
     }
+
+    button {
+      padding: 10px;
+      background-color: #3498db;
+      color: #ecf0f1;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
   </style>
 </head>
 <script src="managing.js"></script>
@@ -60,12 +82,14 @@
   <h1>Harmony Haven</h1>
   
   <ul id="song-list">
-    <li onclick="playSong('song1.mp3')">Song 1</li>
+    <li onclick="playAudio('https://open.spotify.com/track/1OOtq8tRnDM8kG2gqUPjAj)">Song 1</li>
     <li onclick="playSong('song2.mp3')">Song 2</li>
     <li onclick="playSong('song3.mp3')">Song 3</li>
     <li onclick="playSong('song4.mp3')">Song 4</li>
     <li onclick="playSong('song5.mp3')">Song 5</li>
     <li onclick="playSong('song6.mp3')">Song 6</li>
+    <!-- Add "Beat It" to the playlist -->
+    
   </ul>
 
   <div id="controls">
@@ -78,7 +102,7 @@
 </div>
 
 <script>
-  const songs = ['song1.mp3', 'song2.mp3', 'song3.mp3'];
+  const songs = ['song1.mp3', 'song2.mp3', 'song3.mp3', 'beatit.mp3'];
   let currentSongIndex = 0;
   const audioPlayer = document.getElementById('audio-player');
 
@@ -109,8 +133,6 @@
     currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
     audioPlayer.src = songs[currentSongIndex];
     audioPlayer.play();
-  }
-  
   }
 </script>
 
